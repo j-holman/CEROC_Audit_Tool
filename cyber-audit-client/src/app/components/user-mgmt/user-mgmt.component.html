@@ -1,0 +1,41 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">UserID</th>
+          <th scope="col">User Role</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Organization Name</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Button</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let user of users; index as i">
+        <tr *ngFor="let role of user.roles">
+          <td>{{users[i].userId}}</td>
+          <td>{{role.name}}</td>
+          <td>{{users[i].username}}</td>
+          <td>{{users[i].email}}</td>
+          <td>{{users[i].organizationName}}</td>
+          <td>{{users[i].phoneNumber}}</td>
+          <td>{{users[i].firstName}}</td>
+          <td>{{users[i].lastName}}</td>
+          <td>
+            <div ngbDropdown class="dropdown">
+              <button ngbDropdownToggle class="btn btn-secondary" type="button" id="dropdownMenuButton1" aria-expanded="false">
+            Edit User
+            </button>
+              <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
+                <li><a ngbDropdownItem href="#">Action</a></li>
+                <li><a ngbDropdownItem href="#">Another action</a></li>
+                <li><a ngbDropdownItem href="#">Something else here</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>  

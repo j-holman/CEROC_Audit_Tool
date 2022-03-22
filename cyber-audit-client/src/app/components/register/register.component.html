@@ -1,0 +1,70 @@
+<div class="login-main-text" style="text-align: center;">
+    <h2>Register Page</h2>
+    <img src="assets/img/tntech_logo.png" alt="TN Tech Logo" width="300" height="200">
+    <p>Login or register from here to access.</p>
+</div>
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel">
+            </div>
+            <div class ="alert-danger" *ngIf="username.errors && f.submitted">
+                <div *ngIf="username.errors.required">Username is required</div>
+                <div *ngIf="username.errors.minlength">Username must be at least 3 characters</div>
+                <div *ngIf="username.errors.maxlength">Username must be shorter than 20 characters.</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" [(ngModel)]="form.email" required email #email="ngModel">
+            </div>
+            <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                <div *ngIf="email.errors.required">Email is required</div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel">
+            </div>
+            <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.minlength">Password must be at least 6 characters.</div>
+            </div>   
+            <div class ="form-group">
+                <label for="organizationName">Organization Name</label>
+                <input type="organizationName" class="form-control" name="organizationName" [(ngModel)]="form.organizationName" required #organizationName="ngModel">
+            </div>
+            <div class="alert-danger" *ngIf="organizationName.errors && f.submitted">
+                <div *ngIf="organizationName.errors.required">Organization Name is required</div>
+            </div>
+            <div class ="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="phoneNumber" class="form-control" name="phoneNumber" [(ngModel)]="form.phoneNumber" required #phoneNumber="ngModel">
+            </div>
+            <div class="alert-danger" *ngIf="phoneNumber.errors && f.submitted">
+                <div *ngIf="phoneNumber.errors.required">Phone Number is required</div>
+            </div>
+            <div class ="form-group">
+                <label for="firstName">First Name</label>
+                <input type="firstName" class="form-control" name="firstName" [(ngModel)]="form.firstName" required #firstName="ngModel">
+            </div>
+            <div class="alert-danger" *ngIf="firstName.errors && f.submitted">
+                <div *ngIf="firstName.errors.required">First Name is required</div>
+            </div>
+            <div class ="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="lastName" class="form-control" name="lastName" [(ngModel)]="form.lastName" required #lastName="ngModel">
+            </div>
+            <div class="alert-danger" *ngIf="lastName.errors && f.submitted">
+                <div *ngIf="lastName.errors.required">Last Name is required</div>
+            </div>
+            <div class="form-group text-center" style="margin-top: 10px;">
+                <input type="submit" class="btn btn-primary" value="Register" style="margin-top: 10px; margin-bottom: 10px;">
+            </div>
+            <div class ="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                Sign Up Failed!<br />{{ errorMessage }}
+            </div>
+        </form>
+    </div>
+</div>

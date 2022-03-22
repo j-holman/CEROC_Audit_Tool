@@ -1,0 +1,68 @@
+<table>
+    <tr>
+        <th>UserID</th>
+    </tr>
+    <tr>
+        <th>{{report.userId}}</th>
+        <th>{{report.users[0].username}}</th>
+    </tr>
+</table>
+
+<h1 style="text-align: center;">Survey Response</h1>
+<h5 style="text-align: center;">You are responding to {{report.users[0].username}} 's report</h5>
+<br>
+<!-- <body>
+    <div class="container">
+        <main>
+            <form [formGroup]="modAccMgmtForm" (ngSubmit)="onSubmit()">
+                <fieldset>
+                    <div *ngFor="let question of questions; index as i; count as c;">
+                        <label class="form-label mt-4">{{i+1}}. {{questions[i].question}}</label>
+                        <br>
+                        <label class="form-label mt-4">User Response</label>
+                        <textarea class = "form-control" rows="3" readonly>{{ responses[i].user_response }}</textarea>
+                        <label class="form-label mt-4">Mod Response</label>
+                        <textarea class="form-control" formControlName="answer{{i+1}}" rows="3" placeholder="text..."></textarea>
+                    </div>
+                </fieldset>
+                <br>
+                <li class="page-item">
+                    <button type="submit" class ="btn btn-secondary" (click)="onSubmit()">Next</button>
+                  </li>
+            </form>
+        </main>
+    </div>
+</body> -->
+
+<div class="mx-0 mx-sm-auto">
+    <div class="card">
+      <!-- For loop that iterates through the topicNames array -->
+      <div class="card-body" *ngFor="let topic of topicNames; index as i">
+        <div class="text-center">
+          <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+          <h3>{{topicNames[i]}}</h3>
+        </div>
+        <hr />
+        <label></label>
+        <!-- For loop that iterates through the questions array. Uses index i to track the index of topicNames, and index j to track the index of questions  -->
+        <form  [formGroup]="modResponseForm" (ngSubmit)="onSubmit()" class="px-4" action="" *ngFor="let question of questions; index as j; count as c">
+          <!-- If the question has the topicId that matches the index of the topic name, display that question. Uses i+1 as topicIds start at 0 not 1.-->
+            <label *ngIf="questions[j].topicId == i+1">{{j+1}}. {{questions[j].question}}</label>
+            <div class="text-center">
+                <!-- If the question has the topicId that matches the index of topic name, display a textarea for that question -->
+                <textarea *ngIf="questions[j].topicId == i+1" name="question" class="form-control" style="height:100px;" readonly>{{ responses[j].user_response }}</textarea>
+                <br *ngIf="questions[j].topicId == i+1">
+                <label *ngIf="questions[j].topicId == i+1">Mod Response</label>
+                <textarea *ngIf="questions[j].topicId == i+1" class="form-control" formControlName="answer{{j+1}}" style="height:100px;" placeholder="Write your response here."></textarea>
+            </div>
+        </form>
+        <br>
+        <div class="card-footer text-end">
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Save Responses</button>
+        </div>
+        <br>
+    </div>
+    <div class="card-footer text-end">
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit All Responses</button>
+    </div>
+  </div>

@@ -1,0 +1,58 @@
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">Cyber Audit</a>
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" routerLink="/home" routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="isUser">
+            <a class="nav-link" href="#" routerLink="/myreports" routerLinkActive="active">My Report</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/about" routerLinkActive="active">About</a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="isAdmin">
+            <a class="nav-link dropdown-toggle" href="#" routerLink="/admin/dashboard" routerLinkActive="active" id="navbarDropdown" data-bs-toggle="dropdown">
+              Admin Dashboard
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" routerLink="/admin/create-survey" routerLinkActive="active"> Create Survey</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/admin/edit-survey" routerLinkActive="active"> Edit Survey </a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/admin/respond-survey" routerLinkActive="active"> Survey Response </a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/admin/user-mgmt" routerLinkActive="active"> User Management </a></li>
+            </ul>
+          </li>
+        </ul>
+  
+        <!-- Right elements -->
+        <ul class="d-flex align-items-center mb-2 mb-lg-0">
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a class="nav-link" href="#" routerLink="/login" routerLinkActive="active">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a class="nav-link" href="#" routerLink="/register" routerLinkActive="active">Register</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link" href="#" routerLink="/home" routerLinkActive="active" (click)="logout()">Logout</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link" href="#" routerLink="/profile" routerLinkActive="active">Profile</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  

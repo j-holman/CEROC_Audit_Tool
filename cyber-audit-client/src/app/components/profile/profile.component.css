@@ -1,0 +1,14 @@
+.border-class
+          {
+            border:thin black solid;
+            margin:20px;
+            padding:20px;
+          }
+
+div {
+    display: inline-block;
+}
+
+div label {
+    display: block;
+}

@@ -1,0 +1,39 @@
+<div class="form-control">
+    <div class="text-center">
+        <input id="text" />
+    </div>
+</div>
+
+<div class="mx-0 mx-sm-auto" *ngFor="let topic of topicFields; let j = index; trackBy: trackTopicsByFn">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center">
+          <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+          <span><button type="button" class="btn-close" aria-label="Close"></button></span>
+          <p>
+            <input type="text" placeholder="Topic">
+          </p>
+        </div>
+        <hr />
+        <form class="px-4" action="">
+            <!--<label>Question 1.</label>
+            <span><button type="button" class="btn-close" aria-label="Close"></button></span>
+            <div class="text-center">
+                <textarea name="question" class="form-control" style="height:150px;" placeholder="First question here"></textarea>
+            </div> -->
+            <br>
+            <div class="card-footer text-end">
+            <textarea class="form-control" type="text" placeholder="Question {{i+1}}." *ngFor="let field of questionFields; let i = index; trackBy: trackbyFn" [(ngModel)]="questionFields[i]"></textarea>
+            <button type="button" class="btn btn-primary" (click)="addQuestionField()">Add Question</button>
+            </div>
+            <br>
+            <div class="card-footer text-end">
+                <button type="button" class="btn btn-primary" (click)="addTopicField()">Add Topic</button>
+            </div>
+            <br>
+        </form>
+    <button type="submit" class="btn btn-primary">Save Survey</button>
+    </div>
+  </div>
+</div>
+

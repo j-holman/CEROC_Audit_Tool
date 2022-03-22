@@ -1,0 +1,28 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">i</th>
+            <th scope="col">Username</th>
+            <th scope="col">UserID</th>
+            <th scope="col">Report ID</th>
+            <th scope="col">Survey ID</th>
+            <th scope="col">Response ID</th>
+            <th scope="col">Respond</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let report of reports; index as i" > <!-- *ngFor="let user of users; index as i" -->
+           <tr> <!-- *ngFor="let user of report.users" -->
+            <td>{{i}}</td>
+            <td>{{reports[i].users[0].username}}</td>
+            <td>{{reports[i].userId}}</td>
+            <td>{{reports[i].reportId}}</td>
+            <td>{{reports[i].surveyId}}</td>
+            <td>{{reports[i].responseId}}</td>
+            <td>
+                <button class="btn btn-secondary" type="button" (click)="onSelect(report)">Respond</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+  </div>  

@@ -1,0 +1,41 @@
+
+<div class="form-control">
+    <div class="text-center">
+        <label for="typeahead-basic">Search for a Survey:</label>
+        <input id="typeahead-basic inputsm" max_length="150px" type="text" class="form-control input-sm" (click)="getSurveyNames()"[(ngModel)]="model" [ngbTypeahead]="search"/>
+    </div>
+</div>
+
+<div class="mx-0 mx-sm-auto">
+    <div class="card">
+      <!-- For loop that iterates through the topicNames array -->
+      <div class="card-body" *ngFor="let topic of topicNames; index as i">
+        <div class="text-center">
+          <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+          <p>
+            <input type="text" placeholder="{{topicNames[i]}}">
+          </p>
+        </div>
+        <hr />
+        <label></label>
+        <!-- For loop that iterates through the questions array. Uses index i to track the index of topicNames, and index j to track the index of questions  -->
+        <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" class="px-4" action="" *ngFor="let question of questions; index as j; count as c">
+          <!-- If the question has the topicId that matches the index of the topic name, display that question. Uses i+1 as topicIds start at 0 not 1.-->
+            <label *ngIf="questions[j].topicId == i+1">{{j+1}}.</label>
+            <div class="text-center">
+                <!-- If the question has the topicId that matches the index of topic name, display a textarea for that question -->
+                <textarea *ngIf="questions[j].topicId == i+1" class="form-control" formControlName="newQuestion{{j+1}}" placeholder="{{questions[j].question}}" style="height:100px;"></textarea>
+            </div>
+        </form>
+        <br>
+        <div class="card-footer text-end">
+        <button type="button" class="btn btn-primary">Add Question</button>
+        </div>
+        <br>
+        <div class="card-footer text-end">
+            <button type="button" class="btn btn-primary">Add Topic</button>
+        </div>
+        <br>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Save Survey</button>
+    </div>
+  </div>

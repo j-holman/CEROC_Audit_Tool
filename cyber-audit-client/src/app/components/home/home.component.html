@@ -1,0 +1,71 @@
+<div class="container">
+    <h1 class="display-3 text-center">Cyber Security Risk Assesment</h1>
+    <h2 class="text-center">Welcome!</h2>
+    <p class="lead">The Cybersecurity Education, Research, and Outreach Center (CEROC) at Tennessee Tech provides cybersecurity risk assessment services for regional and statewide, small to medium-sized manufacturing companies. Through this program, CEROC seeks to:</p>
+      <ul>
+        <li>Provide a cybersecurity risk assessment for stakeholders</li>
+        <li>Help organizations understand their security posture</li>
+        <li>Provide recommendations to aid in improvement</li>
+        <li>Increase overall regional and statewide awareness of cybersecurity issues</li>
+        <li>Improve cybersecurity training techniques and solutions</li>
+      </ul>
+    <br />
+    <hr>
+    <div class="container" *ngIf="!isLoggedIn">
+      <p>This is a <b>FREE</b> tool for businesses in the state of Tennessee, with the 
+        purpose of helping increase cybersecurity awareness across the state. To
+        use this tool, start by registering below to make an account. After this,
+        you will be able to take a survey that will ask you questions about your
+        organization’s cybersecurity and information technology habits and 
+        policies. After submitting your survey, one of CEROC’s risk assessment 
+        teams will take a look and send you a report with recommendations of 
+        where and how you could improve your organization’s cybersecurity, 
+        organized by severity.
+      </p>
+      <hr>
+      <div class="text-center">
+        <h3>Register Here</h3>
+        <a class="btn btn-primary btn-lg" href="#" role="button" routerLink="/register" routerLinkActive="active" style="margin-bottom: 15px;">Register</a>
+      </div>
+    </div>
+    <div class="container" style="width:800px; margin: 0 auto;" *ngIf="isLoggedIn">
+      <div class="row">
+        <div class = "col-lg-6">
+            <div class="card border-secondary mb-3" style="max-width: 30rem;">
+                <div class="card-body">
+                <h4 class="card-title">Take a Survey</h4>
+                <p class="card-text">Take and submit a new cyber audit survey</p>
+                <button type="button" class="btn btn-primary" href="#" routerLink="/survey-intro" routerLinkActive="active">Take Survey</button>
+                </div>
+            </div>
+        </div>
+        <div class = "col-lg-6">
+            <div class="card border-secondary mb-3" style="max-width: 30rem;">
+                <div class="card-body">
+                <h4 class="card-title">View Reports</h4>
+                <p class="card-text">View responses to your completed surveys</p>
+                <button type="button" class="btn btn-primary" href="#" routerLink="/myreports" routerLinkActive="active">View Reports</button>
+                </div>
+            </div>
+        </div>
+        <div class = "col-lg-6">
+            <div class="card border-secondary mb-3" style="max-width: 30rem;">
+                <div class="card-body">
+                <h4 class="card-title">Edit Profile</h4>
+                <p class="card-text">Review and edit your personal information</p>
+                <button type="button" class="btn btn-primary" href="#" routerLink="/profile" routerLinkActive="active">Edit Profile</button> 
+                </div>
+            </div>
+        </div>
+        <div class = "col-lg-6">
+            <div class="card border-secondary mb-3" style="max-width: 30rem;">
+                <div class="card-body">
+                <h4 class="card-title">Log Out</h4>
+                <p class="card-text">Log out of your account</p>
+                <button type="submit" class="btn btn-primary" (click)="logout()">Log Out</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

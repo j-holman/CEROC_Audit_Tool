@@ -1,0 +1,66 @@
+<div class="container justify-content-center" *ngIf="currentUser; else loggedOut">
+
+  <div class="jumbotron" style="text-align: center;">
+      <h4 class="display-3">Profile Settings</h4>
+  </div>
+  <br />
+  <form class="border-class text-center" style="width: 50%; margin-bottom: 10px;">
+    <div class="col-12"><b>User Information</b></div>
+    <div class="form-row">
+      <div class="col-md-6 form-group" style="padding-right: 50px;">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName" placeholder="{{ currentUser.firstName }}" value="">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="lastName" value="" placeholder="{{ currentUser.lastName }}">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="{{ currentUser.username }}" value="">
+        <label>New Password</label>
+        <input class="form-control" type="password" placeholder="••••••">
+      </div>
+      
+      <div class="col-md-6 form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" placeholder="{{ currentUser.email }}" value="">
+        <label for="organizationName" class="form-label">Organization</label>
+        <input type="text" class="form-control" id="organizationName" placeholder="{{ currentUser.organizationName }}" value="">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="phoneNumber" placeholder="{{ currentUser.phoneNumber }}" value="">
+        <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+        <input class="form-control" type="password" placeholder="••••••">
+      </div>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary profile-button" type="button" style="margin-top: 10px;">Save Profile</button>
+    </div>
+  </form>
+
+  <table class="table caption-top">
+    <caption>Reports Table</caption>
+    <thead>
+      <tr>
+        <th scope="col">Report Name</th>
+        <th scope="col">Progress</th>
+        <th scope="col">View Survey</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Report 10/23/20</td>
+        <td>Review Completed</td>
+        <td><button type="button" class="btn btn-primary">View</button></td>
+      </tr>
+      <tr>
+        <td>Report 3/11/21</td>
+        <td>Review Pending</td>
+        <td><button type="button" class="btn btn-primary">View</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+<ng-template #loggedOut>
+Please login.
+</ng-template>
