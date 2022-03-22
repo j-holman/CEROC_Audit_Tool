@@ -1,0 +1,38 @@
+services:
+  angular:
+    build: ./cyber-audit-client
+    ports:
+      - "4200:4200"
+    networks:
+      - frontend
+      - client-server-interface
+
+  express:
+    build: ./cyber-audit-server
+    ports:
+      - "3000:3000"
+    networks:
+      - client-server-interface
+      - backend
+
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    volumes: 
+      - db-data:/data/db
+    networks:
+      - backend
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+
+volumes:
+    db-data: {}
+
+networks:
+  frontend: {}
+  client-server-interface: {}
+  backend: {}
+ 
